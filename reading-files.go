@@ -20,6 +20,7 @@ func main() {
 	fmt.Print(string(dat))
 
 	f, err := os.Open("/tmp/dat")
+	defer f.Close()
 	check(err)
 	b1 := make([]byte, 5)
 	n1, err := f.Read(b1)
@@ -43,5 +44,4 @@ func main() {
 	b4, err := r4.Peek(5)
 	check(err)
 	fmt.Printf("5 bytes: %s\n", string(b4))
-	f.Close()
 }
