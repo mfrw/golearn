@@ -1,20 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-func f(from string) {
-	for i := 0; i < 3; i++ {
+func f(from string) int {
+	for i := 0; i < 50; i++ {
 		fmt.Println(from, ":", i)
+		time.Sleep(time.Millisecond * 10)
 	}
+	return 1
 }
 
 func main() {
-	f("direct")
+	go f("direct")
 	go f("goroutine")
 
-	go func(msg string) {
+	func(msg string) {
 		fmt.Println(msg)
 	}("going")
+
 	var input string
 	fmt.Scanln(&input)
 	fmt.Println("done")
