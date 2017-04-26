@@ -32,9 +32,11 @@ func main() {
 		path = os.Args[1]
 	}
 
-	port := os.Args[2]
-	fmt.Println("Try any of those ipaddrs with xx.xx.xx.xx:8080")
-	fmt.Println("Server starting on Port 8080")
+	port := "8080"
+	if len(os.Args) > 2 {
+		port = os.Args[2]
+	}
+	fmt.Println("Server starting on Port " + port)
 	fmt.Println("Server Hosting: ", path)
 	log.Fatal(http.ListenAndServe(":"+port, http.FileServer(http.Dir(path))))
 }
