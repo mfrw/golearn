@@ -1,7 +1,7 @@
 package main
 
-// usage : ./trace 2>trace.out 
-// go tool trace trace.out
+// usage : ./pprof 2>prof.cpu 
+// go tool pprof prof.cpu
 
 import (
         "fmt"
